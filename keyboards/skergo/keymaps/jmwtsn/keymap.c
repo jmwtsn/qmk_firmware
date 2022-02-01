@@ -33,8 +33,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
     case MSG:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_TAB) SS_TAP(X_ENT)
-			SS_DELAY(200) "204" SS_TAP(X_ENT)
+            SEND_STRING(SS_TAP(X_TAB) 
+                       SS_TAP(X_ENT)
+			SS_DELAY(200) "204" 
+			SS_TAP(X_ENT)
 			SS_TAP(X_TAB) 
 			SS_DELAY(200) "Message left at "SS_LCTL("v")". ");
         } else {
@@ -44,8 +46,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		    
     case NML:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_TAB) SS_TAP(X_ENT)
-            		SS_DELAY(200) "203" SS_TAP(X_ENT)
+            SEND_STRING(SS_TAP(X_TAB) 
+                        SS_TAP(X_ENT)
+            		SS_DELAY(200) "203" 
+            		SS_TAP(X_ENT)
             		SS_TAP(X_TAB) 
             		SS_DELAY(200)"No message left at "SS_LCTL("v")". ");
         } else {
@@ -55,10 +59,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		    
     case RNA:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_TAB) SS_TAP(X_ENT)
-            SS_DELAY(200) "201" SS_TAP(X_ENT) 
-            SS_TAP(X_TAB)
-            SS_DELAY(200)"RNA at "SS_LCTL("v")". ");
+            SEND_STRING(SS_TAP(X_TAB) 
+                        SS_TAP(X_ENT)
+                        SS_DELAY(200) "201" 
+                        SS_TAP(X_ENT) 
+                        SS_TAP(X_TAB)
+                        SS_DELAY(200)"RNA at "SS_LCTL("v")". ");
         } else {
         }
         break;
@@ -74,10 +80,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		    
     case BSIG:
         if (record->event.pressed) {
-            SEND_STRING(SS_TAP(X_TAB) SS_TAP(X_ENT)
-            SS_DELAY(200) "202" SS_TAP(X_ENT) 
-            SS_TAP(X_TAB)
-            SS_DELAY(200)"Busy signal at "SS_LCTL("v")". ");
+            SEND_STRING(SS_TAP(X_TAB) 
+                        SS_TAP(X_ENT)
+                        SS_DELAY(200) "202" 
+                        SS_TAP(X_ENT) 
+                        SS_TAP(X_TAB)
+                        SS_DELAY(200)"Busy signal at "SS_LCTL("v")". ");
         } else {
         }
         break;
