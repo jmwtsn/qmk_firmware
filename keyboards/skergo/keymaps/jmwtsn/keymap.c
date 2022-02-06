@@ -28,7 +28,9 @@ enum custom_keycodes {
     SELNUM,
     DISCO,
     MSJIG,
-    NOCON
+    NOCON,
+    SLSAST,
+    ASTSLS
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -117,7 +119,19 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
         
+        case SLSAST:
+        if (record->event.pressed) {
+            SEND_STRING("/*");
+        } else {
+        }
+        break;
         
+        case ASTSLS:
+        if (record->event.pressed) {
+            SEND_STRING("*/");
+        } else {
+        }
+        break;
         
         
     case NOCON:
@@ -193,7 +207,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT(    /*Numpad*/
 		_______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LNUM, KC_DEL,
-		_______, _______, _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, _______, _______, _______, KC_VOLU,
+		_______, _______, _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
 		_______, _______, _______, DISCO,   NOCON,   _______,              KC_P4,   KC_P5,   KC_P6,   _______, _______, _______, _______,          KC_VOLD,
 		_______, _______, _______, _______, _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
 		_______, _______, _______, _______,                                KC_P0,   _______,                            KC_HOME, KC_PGDN, KC_END),
