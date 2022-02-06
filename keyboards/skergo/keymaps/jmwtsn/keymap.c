@@ -156,6 +156,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SELNUM:
         if (record->event.pressed) {
             SEND_STRING(
+            /*
+            SS_LCTL("0+++++")
+            */    
             SS_TAP(X_F7)
             SS_TAP(X_ENT)
             SS_DELAY(200)            //turn on caret browsing and wait
@@ -168,6 +171,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SS_TAP(X_LEFT)SS_UP(X_LSFT)
             SS_LCTL("c")             //select phone number
             SS_TAP(X_F7)             //turn off caret browsing
+            /*
+            SS_LCTL(--)
+            */
             SS_DOWN(X_LALT)SS_TAP(X_TAB)SS_UP(X_LALT)
             SS_DELAY(200)            //switch to VCC and wait
             SS_LCTL("v")             //paste number
