@@ -30,8 +30,51 @@ enum custom_keycodes {
     MSJIG,
     NOCON,
     SLSAST,
-    ASTSLS
+    ASTSLS,
+    NXT,
+    JIGGY
 };
+
+
+
+bool mouse_jiggle_mode = false;
+
+void matrix_init_user(void) {
+}
+
+void matrix_scan_user(void) {
+  
+  if (mouse_jiggle_mode) {
+    tap_code(KC_MS_UP);
+    tap_code(KC_MS_DOWN);
+  } else {
+
+  }
+}
+
+/*
+  if (!waiting) {
+    tap_code(KC_MS_UP);
+    tap_code(KC_MS_DOWN);
+    key_timer = timer_read();
+    waiting = true;
+  } else if (timer_elapsed(key_timer) > 60000) {
+    waiting = false;    
+  }
+ 
+  
+  if (mouse_jiggle_mode) {      
+   
+  } else {
+
+  }
+}
+
+*/
+
+
+
+
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -119,14 +162,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
         
-        case SLSAST:
+        
+    case SLSAST:
         if (record->event.pressed) {
             SEND_STRING("/*");
         } else {
         }
         break;
         
-        case ASTSLS:
+    case ASTSLS:
         if (record->event.pressed) {
             SEND_STRING("*/");
         } else {
@@ -149,16 +193,11 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
         
         
-        
-        
-                
-        
     case SELNUM:
         if (record->event.pressed) {
             SEND_STRING(
-            /*
-            SS_LCTL("0+++++")
-            */    
+            SS_LCTL("0++++++")
+            SS_DELAY(200)
             SS_TAP(X_F7)
             SS_TAP(X_ENT)
             SS_DELAY(200)            //turn on caret browsing and wait
@@ -171,9 +210,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SS_TAP(X_LEFT)SS_UP(X_LSFT)
             SS_LCTL("c")             //select phone number
             SS_TAP(X_F7)             //turn off caret browsing
-            /*
-            SS_LCTL(--)
-            */
+            SS_LCTL("---")
+            SS_DELAY(200)
             SS_DOWN(X_LALT)SS_TAP(X_TAB)SS_UP(X_LALT)
             SS_DELAY(200)            //switch to VCC and wait
             SS_LCTL("v")             //paste number
@@ -184,7 +222,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         break;
        
     
-  case DISCO:
+    case DISCO:
         if (record->event.pressed) {
             SEND_STRING(
             SS_TAP(X_TAB)SS_TAP(X_TAB)
@@ -193,9 +231,39 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             ); 
         } else {
         }
-        break;  
+        break;
         
-		    
+    case NXT:
+        if (record->event.pressed) {
+            SEND_STRING(
+            SS_TAP(X_TAB)
+            SS_DELAY(200)
+            SS_TAP(X_ENT) 
+            SS_DELAY(500)"c");
+        } else {
+        }
+        break;
+        
+        
+
+
+
+    case JIGGY:
+      if (record->event.pressed) {
+        mouse_jiggle_mode = true;
+      } else {
+        mouse_jiggle_mode = false;
+      }
+      break;
+        
+        
+
+
+
+
+ 
+        
+	    
     }
     return true;
 };
@@ -206,16 +274,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	[0] = LAYOUT(    /*Base*/
 		KC_ESC,  KC_1,    KC_2,   KC_3,  KC_4,   KC_5,    KC_6,        KC_7,    KC_8,    KC_9,    KC_0,   KC_MINS, KC_EQL,  KC_GRV,  KC_BSPC,
 		LT(2,KC_TAB),     KC_Q,   KC_W,  KC_E,   KC_R,    KC_T,        KC_Y,    KC_U,    KC_I,    KC_O,   KC_P,    KC_LBRC, KC_RBRC, KC_BSLS,   KC_PGUP,
-		LT(3,C(KC_BSPC)), KC_A,   KC_S,  KC_D,   KC_F,    KC_G,        KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_QUOT, LT(3,KC_ENT),       KC_PGDN,
+		LT(3,KC_BSPC),    KC_A,   KC_S,  KC_D,   KC_F,    KC_G,        KC_H,    KC_J,    KC_K,    KC_L,   KC_SCLN, KC_QUOT, LT(3,KC_ENT),       KC_PGDN,
 		KC_LSFT, KC_Z,    KC_X,   KC_C,  KC_V,   KC_B,                 KC_N,    KC_M,    KC_COMM, KC_DOT, KC_SLSH, KC_RSFT,          KC_UP,     KC_END,
 		KC_LCTL, KC_LALT, LT(1,KC_ENT),  KC_LGUI,                      KC_SPC,        MT(KC_LCTL,KC_PSCR),                  KC_LEFT, KC_DOWN, KC_RGHT),
 
 
 	[1] = LAYOUT(    /*Numpad*/
 		_______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LNUM, KC_DEL,
-		_______, _______, _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
+		_______, JIGGY,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
 		_______, _______, _______, DISCO,   NOCON,   _______,              KC_P4,   KC_P5,   KC_P6,   _______, _______, _______, _______,          KC_VOLD,
-		_______, _______, _______, _______, _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
+		_______, _______, _______, NXT,     _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
 		_______, _______, _______, _______,                                KC_P0,   _______,                            KC_HOME, KC_PGDN, KC_END),
 
 
