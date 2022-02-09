@@ -16,6 +16,17 @@
 
 #include QMK_KEYBOARD_H
 
+#include "features/mouse_turbo_click.h"
+
+ 
+
+
+
+
+
+
+
+
 enum custom_keycodes {
     MSG = SAFE_RANGE,
     NML,
@@ -81,7 +92,10 @@ void matrix_scan_user(void) {
 
 
 
+
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
     switch (keycode) {
     
 
