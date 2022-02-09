@@ -32,9 +32,12 @@ enum custom_keycodes {
     SLSAST,
     ASTSLS,
     NXT,
-    JIGGY
+    JIGGY1,
+    JIGGY2
 };
 
+
+/*
 
 
 bool mouse_jiggle_mode = false;
@@ -51,6 +54,8 @@ void matrix_scan_user(void) {
 
   }
 }
+
+*/
 
 /*
   if (!waiting) {
@@ -154,10 +159,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
                         SS_TAP(X_TAB) 
                         SS_TAP(X_TAB) 
                         SS_TAP(X_ENT) 
-                        SS_DELAY(2000) "300" 
+                        SS_DELAY(2500) "800" 
                         SS_TAP(X_ENT)
                         SS_TAP(X_TAB) 
-                        SS_DELAY(200) SS_LCTL("v")" = NIS. No other numbers available. ");
+                        SS_DELAY(200) "No valid numbers available. ");
         } else {
         }
         break;
@@ -196,9 +201,37 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case SELNUM:
         if (record->event.pressed) {
             SEND_STRING(
+            SS_TAP(X_F7)
+            SS_DELAY(100)
+            SS_TAP(X_ENT)
+            SS_DELAY(200)            //turn on caret browsing and wait
+            SS_LCTL("f")"Calling "
+            SS_TAP(X_ENT)
+            SS_TAP(X_ESC)
+            SS_TAP(X_RIGHT)          //move to start of phone number
+            SS_DOWN(X_LCTL)
+            SS_DOWN(X_LSFT)
+            SS_TAP(X_RIGHT)SS_TAP(X_RIGHT)SS_TAP(X_RIGHT)SS_TAP(X_RIGHT)SS_TAP(X_RIGHT)
+            SS_UP(X_LCTL)  
+            SS_TAP(X_LEFT)SS_UP(X_LSFT)
+            SS_LCTL("c")             //select phone number
+            SS_TAP(X_F7)             //turn off caret browsing
+            SS_DOWN(X_LALT)SS_TAP(X_TAB)SS_UP(X_LALT)
+            SS_DELAY(200)            //switch to VCC and wait
+            SS_LCTL("v")             //paste number
+            SS_TAP(X_ENT)
+            );
+        } else {
+        }
+        break;
+
+/*    case SELNUM:
+        if (record->event.pressed) {
+            SEND_STRING(
             SS_LCTL("0++++++")
             SS_DELAY(200)
             SS_TAP(X_F7)
+            SS_DELAY(100)
             SS_TAP(X_ENT)
             SS_DELAY(200)            //turn on caret browsing and wait
             SS_TAP(X_UP)SS_TAP(X_UP) 
@@ -219,7 +252,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             );
         } else {
         }
-        break;
+        break;  */
        
     
     case DISCO:
@@ -239,16 +272,16 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             SS_TAP(X_TAB)
             SS_DELAY(200)
             SS_TAP(X_ENT) 
-            SS_DELAY(500)"c");
+            SS_DELAY(1000)"c");
         } else {
         }
         break;
         
         
 
+/*
 
-
-    case JIGGY:
+    case JIGGY1:
       if (record->event.pressed) {
         mouse_jiggle_mode = true;
       } else {
@@ -256,7 +289,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       }
       break;
         
-        
+*/        
 
 
 
@@ -281,7 +314,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT(    /*Numpad*/
 		_______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LNUM, KC_DEL,
-		_______, JIGGY,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
+		_______, _______,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
 		_______, _______, _______, DISCO,   NOCON,   _______,              KC_P4,   KC_P5,   KC_P6,   _______, _______, _______, _______,          KC_VOLD,
 		_______, _______, _______, NXT,     _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
 		_______, _______, _______, _______,                                KC_P0,   _______,                            KC_HOME, KC_PGDN, KC_END),
