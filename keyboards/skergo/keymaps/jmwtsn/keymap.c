@@ -38,47 +38,6 @@ enum custom_keycodes {
 };
 
 
-/*  Bunch of code from DIYCharles' Mouse Jiggler project.
-
-
-bool mouse_jiggle_mode = false;
-
-void matrix_init_user(void) {
-}
-
-void matrix_scan_user(void) {
-  
-  if (mouse_jiggle_mode) {
-    tap_code(KC_MS_UP);
-    tap_code(KC_MS_DOWN);
-  } else {
-
-  }
-}
-
-*/
-
-/*
-  if (!waiting) {
-    tap_code(KC_MS_UP);
-    tap_code(KC_MS_DOWN);
-    key_timer = timer_read();
-    waiting = true;
-  } else if (timer_elapsed(key_timer) > 60000) {
-    waiting = false;    
-  }
- 
-  
-  if (mouse_jiggle_mode) {      
-   
-  } else {
-
-  }
-}
-
-*/
-
-
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
     
