@@ -16,6 +16,7 @@
 */
 
 #include QMK_KEYBOARD_H
+#include "features/mouse_turbo_click.h"
 
 enum custom_keycodes {
     MSG = SAFE_RANGE,
@@ -40,10 +41,8 @@ enum custom_keycodes {
 
 /*   Code for getreuer mouse_turbo_click
 
-#include "features/mouse_turbo_click.h"
-
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+
   // Your macros ...
 
   return true;
@@ -54,6 +53,9 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+
+  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+
     switch (keycode) {
     
 
@@ -221,19 +223,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         }
         break;
         
-        
-
-/*   DIYCHarles mouse jiggler macro
-
-    case JIGGY1:
-      if (record->event.pressed) {
-        mouse_jiggle_mode = true;
-      } else {
-        mouse_jiggle_mode = false;
-      }
-      break;
-        
-*/        
 
 	    
     }
@@ -253,7 +242,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT(    /*Numpad*/
 		_______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LNUM, KC_DEL,
-		_______, _______, _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
+		_______, TURBO,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
 		_______, _______, _______, DISCO,   NOCON,   _______,              KC_P4,   KC_P5,   KC_P6,   _______, _______, _______, _______,          KC_VOLD,
 		_______, _______, _______, NXT,     _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
 		_______, _______, _______, _______,                                KC_P0,   _______,                            KC_HOME, KC_PGDN, KC_END),
