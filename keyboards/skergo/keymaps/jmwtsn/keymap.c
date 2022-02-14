@@ -16,7 +16,7 @@
 */
 
 #include QMK_KEYBOARD_H
-#include "features/mouse_turbo_click.h"
+#include "features/mister_smith.h"
 
 enum custom_keycodes {
     MSG = SAFE_RANGE,
@@ -29,32 +29,17 @@ enum custom_keycodes {
     NIS,
     SELNUM,
     DISCO,
-    TURBO,
     NOCON,
     SLSAST,
     ASTSLS,
     NXT,
-    JIGGY1,
-    JIGGY2
+    JIGGY
 };
-
-
-/*   Code for getreuer mouse_turbo_click
-
-bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-
-  // Your macros ...
-
-  return true;
-}
-
-*/
-
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+  if (!process_get_jiggy_withit(keycode, record, JIGGY)) { return false; }
 
     switch (keycode) {
     
@@ -242,7 +227,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 	[1] = LAYOUT(    /*Numpad*/
 		_______, _______, _______, _______, _______, _______, _______,     _______, _______, _______, _______, _______, _______, KC_LNUM, KC_DEL,
-		_______, TURBO,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
+		_______, JIGGY,   _______, _______, _______, _______,              KC_P7,   KC_P8,   KC_P9,   KC_P0,   _______, SLSAST,  ASTSLS,  _______, KC_VOLU,
 		_______, _______, _______, DISCO,   NOCON,   _______,              KC_P4,   KC_P5,   KC_P6,   _______, _______, _______, _______,          KC_VOLD,
 		_______, _______, _______, NXT,     _______, _______,              KC_P1,   KC_P2,   KC_P3,   _______, _______, _______, KC_PGUP,          MU_TOG,
 		_______, _______, _______, _______,                                KC_P0,   _______,                            KC_HOME, KC_PGDN, KC_END),
