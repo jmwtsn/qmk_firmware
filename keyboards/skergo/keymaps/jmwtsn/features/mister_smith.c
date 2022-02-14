@@ -34,7 +34,7 @@
 //
 // WARNING: The keyboard might become unresponsive if the period is too small.
 // I suggest setting this no smaller than 50.
-#define JIGGY_PERIOD 1000
+#define JIGGY_PERIOD_MS 120000
 
 static deferred_token click_token = INVALID_DEFERRED_TOKEN;
 static bool click_registered = false;
@@ -49,7 +49,7 @@ static uint32_t get_jiggy_callback(uint32_t trigger_time, void *cb_arg) {
     click_registered = true;
     tap_code16(KC_MS_R);
   }
-  return JIGGY_PERIOD / 2;  // Execute callback again in half a period.
+  return JIGGY_PERIOD_MS / 2;  // Execute callback again in half a period.
 }
 
 // Starts Turbo Click, begins the callback.
