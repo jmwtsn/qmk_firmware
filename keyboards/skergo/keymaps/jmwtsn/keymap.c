@@ -56,8 +56,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 		    
     case NML:
         if (record->event.pressed) {
-            SEND_STRING(/*  SS_TAP(X_NOCON)  */   
-                        "203" SS_TAP(X_ENT)
+            SEND_STRING("203" SS_TAP(X_ENT)
             		SS_DELAY(200) SS_TAP(X_TAB) 
             		SS_DELAY(200) "No message left at "SS_LCTL("v")". ");
         } else {
