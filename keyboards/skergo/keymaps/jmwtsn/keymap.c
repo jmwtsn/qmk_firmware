@@ -28,7 +28,7 @@ enum custom_keycodes {
     NIS,
     SELNUM,
     DISCO,
-    MSJIG,
+    TURBO,
     NOCON,
     SLSAST,
     ASTSLS,
@@ -36,6 +36,21 @@ enum custom_keycodes {
     JIGGY1,
     JIGGY2
 };
+
+
+/*   Code for getreuer mouse_turbo_click
+
+#include "features/mouse_turbo_click.h"
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+  if (!process_mouse_turbo_click(keycode, record, TURBO)) { return false; }
+  // Your macros ...
+
+  return true;
+}
+
+*/
+
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
