@@ -17,16 +17,16 @@
 // For full documentation of Pascal Getreuer's original project, see
 // https://getreuer.info/posts/keyboards/mouse-turbo-click
 
-#include "features/mister_smith.h"
+#include "bel_air/mister_smith.h"
 
 // This library relies on that mouse keys and the deferred execution API are
 // enabled, which we check for here. Enable them in you rules.mk by setting:
 //   MOUSEKEY_ENABLE = yes
 //   DEFERRED_EXEC_ENABLE = yes
 #if !defined(MOUSEKEY_ENABLE)
-#error "get_jiggy_withit: Please set `MOUSEKEY_ENABLE = yes` in rules.mk."
+#error "get_jiggy_with_it: Please set `MOUSEKEY_ENABLE = yes` in rules.mk."
 #elif !defined(DEFERRED_EXEC_ENABLE)
-#error "get_jiggy_withit: Please set `DEFERRED_EXEC_ENABLE = yes` in rules.mk."
+#error "get_jiggy_with_it: Please set `DEFERRED_EXEC_ENABLE = yes` in rules.mk."
 #else
 
 // The click period in milliseconds. For instance a period of 200 ms would be 5
@@ -73,7 +73,7 @@ static void get_jiggy_stop(void) {
   }
 }
 
-bool process_get_jiggy_withit(uint16_t keycode, keyrecord_t* record,
+bool process_get_jiggy_with_it(uint16_t keycode, keyrecord_t* record,
                                uint16_t get_jiggy_keycode) {
   static bool locked = false;
   static bool tapped = false;

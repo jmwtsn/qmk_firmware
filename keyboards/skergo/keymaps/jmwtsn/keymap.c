@@ -40,7 +40,7 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
-  if (!process_get_jiggy_withit(keycode, record, JIGGY)) { return false; }
+  if (!process_get_jiggy_with_it(keycode, record, JIGGY)) { return false; }
 
     switch (keycode) {
     

@@ -49,5 +49,5 @@
 //
 //     return true;
 //   }
-bool process_get_jiggy_withit(uint16_t keycode, keyrecord_t* record,
+bool process_get_jiggy_with_it(uint16_t keycode, keyrecord_t* record,
                                uint16_t get_jiggy_keycode);
