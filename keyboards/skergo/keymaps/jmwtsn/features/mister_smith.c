@@ -65,11 +65,11 @@ static void get_jiggy_stop(void) {
   if (click_token != INVALID_DEFERRED_TOKEN) {
     cancel_deferred_exec(click_token);
     click_token = INVALID_DEFERRED_TOKEN;
-    if (click_registered) {
+/*    if (click_registered) {
       // If mouse button is currently registered, release it.
       unregister_code16(KC_MS_BTN1);
       click_registered = false;
-    }
+    }  */
   }
 }
 
