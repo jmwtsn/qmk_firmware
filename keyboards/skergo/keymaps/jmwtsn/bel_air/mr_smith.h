@@ -13,7 +13,8 @@
 // limitations under the License.
 //
 //
-// Mouse Turbo Click - click the mouse rapidly
+// Mouse jiggler - move the mouse once in a while to prevent screen time-out
+// Addapted from Pascal Getreuer's Mouse Turbo Click.
 //
 // This library implements a "Turbo Click" button that clicks the mouse rapidly,
 // implemented using mouse keys and a periodic callback function:
@@ -28,7 +29,7 @@
 // MOUSEKEY_ENABLE = yes, DEFERRED_EXEC_ENABLE = yes.
 //
 //
-// For full documentation, see
+// For full documentation of Pascal Getreuer's original project, see
 // https://getreuer.info/posts/keyboards/mouse-turbo-click
 
 #pragma once
@@ -48,5 +49,5 @@
 //
 //     return true;
 //   }
-bool process_mouse_turbo_click(uint16_t keycode, keyrecord_t* record,
-                               uint16_t turbo_click_keycode);
+bool process_get_jiggy_with_it(uint16_t keycode, keyrecord_t* record,
+                               uint16_t get_jiggy_keycode);
