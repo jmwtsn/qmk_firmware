@@ -16,15 +16,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #pragma once
-
 #include "config_common.h"
 
+
 /* USB Device descriptor parameter */
-#define VENDOR_ID 0x7807
-#define PRODUCT_ID 0xDCCB
-#define DEVICE_VER 0x0001
-#define MANUFACTURER gtips
-#define PRODUCT reviung41
+#define VENDOR_ID                  0x7807
+#define PRODUCT_ID                 0xDCCB
+#define DEVICE_VER                 0x0001
+#define MANUFACTURER               gtips
+#define PRODUCT                    Reviung41
 
 /* key matrix size */
 #define MATRIX_ROWS 7
@@ -67,7 +67,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   #define RGBLIGHT_LIMIT_VAL 255 /* The maximum brightness level */
   #define RGBLIGHT_SLEEP  /* If defined, the RGB lighting will be switched off when the host goes to sleep */
 // /*== all animations enable ==*/
-  #define RGBLIGHT_ANIMATIONS
+   #define RGBLIGHT_ANIMATIONS
 // /*== or choose animations ==*/
 //   #define RGBLIGHT_EFFECT_BREATHING
 //   #define RGBLIGHT_EFFECT_RAINBOW_MOOD
@@ -93,9 +93,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //#define MATRIX_HAS_GHOST
 
 /* Mechanical locking support. Use KC_LCAP, KC_LNUM or KC_LSCR instead in keymap */
-#define LOCKING_SUPPORT_ENABLE
+// #define LOCKING_SUPPORT_ENABLE
 /* Locking resynchronize hack */
-#define LOCKING_RESYNC_ENABLE
+// #define LOCKING_RESYNC_ENABLE
 
 /* If defined, GRAVE_ESC will always act as ESC when CTRL is held.
  * This is userful for the Windows task manager shortcut (ctrl+shift+esc).
@@ -144,3 +144,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* Bootmagic Lite key configuration */
 // #define BOOTMAGIC_LITE_ROW 0
 // #define BOOTMAGIC_LITE_COLUMN 0
+
+// Configure the global tapping term (default: 200ms)
+#define TAPPING_TERM 210
+
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
+#define MK_3_SPEED
+#define MK_MOMENTARY_ACCEL
+
+//#ifdef OLED_DRIVER_ENABLE
+  #define OLED_DISPLAY_128X32
+  #define OLED_BRIGHTNESS          64
+  #define OLED_TIMEOUT             60000
+  #define OLED_FADE_OUT
+  #define OLED_FADE_OUT_INTERVAL   10
+  #define OLED_SCROLL_TIMEOUT      1
+//#endif

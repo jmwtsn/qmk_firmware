@@ -17,11 +17,7 @@
 // For full documentation of Pascal Getreuer's original project, see
 // https://getreuer.info/posts/keyboards/mouse-turbo-click
 
-<<<<<<< HEAD
 #include "bel_air/mr_smith.h"
-=======
-#include "bel_air/mister_smith.h"
->>>>>>> 1312beac920949dcb7ac04e70637b1a032d2bf91
 
 // This library relies on that mouse keys and the deferred execution API are
 // enabled, which we check for here. Enable them in you rules.mk by setting:
