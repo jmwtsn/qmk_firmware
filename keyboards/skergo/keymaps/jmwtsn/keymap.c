@@ -16,7 +16,11 @@
 */
 
 #include QMK_KEYBOARD_H
+<<<<<<< HEAD
 //#include "bel_air/mr_smith.h"
+=======
+#include "features/mister_smith.h"
+>>>>>>> 1312beac920949dcb7ac04e70637b1a032d2bf91
 
 
 enum custom_keycodes {
@@ -40,7 +44,11 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
+<<<<<<< HEAD
 //  if (!process_get_jiggy_with_it(keycode, record, JIGGY)) { return false; }
+=======
+  if (!process_get_jiggy_with_it(keycode, record, JIGGY)) { return false; }
+>>>>>>> 1312beac920949dcb7ac04e70637b1a032d2bf91
 
     switch (keycode) {
     
