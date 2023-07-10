@@ -52,6 +52,9 @@ enum custom_keycodes {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
+	set_single_persistent_default_layer(1);
+	
+	
     if (!process_get_jiggy_with_it(keycode, record, JIGGY)) { return false; }
 
     switch (keycode) {
@@ -80,6 +83,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     return true;
 };
+
+
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 	
@@ -137,10 +142,10 @@ bool oled_task_user(void) {
 
    switch (get_highest_layer(layer_state)) {
         case 0:
-			oled_write_ln_P(PSTR("Whatner hell?!"), false);
+			oled_write_ln_P(PSTR("Don't Panic!  "), false);
             break;
         case 1:
-			oled_write_ln_P(PSTR("Don't Panic!  "), false);
+			oled_write_ln_P(PSTR("Whatner hell?!"), false);
             break;
         case 3:
             oled_write_ln_P(PSTR("-=[]\\         "), false);
